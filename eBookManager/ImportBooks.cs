@@ -26,6 +26,12 @@ namespace eBookManager
         private async void ImportBooks_Load(object sender, EventArgs e)
         {
             _spaces = await _spaces.ReadFromDataStore(_jsonPath);
+            PopulateStorageSpacesList();
+            if (dlVirtualStorageSpaces.Items.Count == 0)
+            {
+                dlVirtualStorageSpaces.Items.Add("<create new storage space > ");
+            }
+            lbleBookCount.Text = "";
         }
         private HashSet<string> AllowedExtensions => new HashSet<string>(StringComparer.InvariantCultureIgnoreCase){ ".doc", ".docx", ".pdf", ".epub", ".lit"};
         private enum Extension {  doc = 0, docx = 1, pdf = 2, epub =3, lit=4}
@@ -84,5 +90,27 @@ namespace eBookManager
                 MessageBox.Show(ex.Message);
             }
         }
+        private void PopulateStorageSpacesList()
+        {
+            List<KeyValuePair<int, string>>  lstSpaces = new List<KeyValuePair<int, string>>();
+            BindStorageSpaceList((int)_storageSpaceSelection.NoSelection, "Select Storage Space");
+            void BindStorageSpaceList(int key, string value) => lstSpaces.Add(new KeyValuePair<int, string>(key, value));
+            if(_spaces is null || _spaces.Count() ==0) //Pattern matching
+            {
+                BindStorageSpaceList((int)_storageSpaceSelection.New, " <create new> ");
+            }
+            else
+            {
+                foreach (var space in _spaces)
+                {
+                    BindStorageSpaceList(space.ID, space.Name);
+                }
+            }
+            dlVirtualStorageSpaces.DataSource = new BindingSource(lstSpaces, null);
+            dlVirtualStorageSpaces.DisplayMember = "Value";
+            dlVirtualStorageSpaces.ValueMember = "Key";
+
+        }
+        
     }
 }

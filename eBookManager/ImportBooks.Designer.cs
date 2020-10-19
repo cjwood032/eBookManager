@@ -34,7 +34,7 @@
             this.tvFoundBooks = new System.Windows.Forms.TreeView();
             this.VSS = new System.Windows.Forms.GroupBox();
             this.lblStorageSpaceDescription = new System.Windows.Forms.Label();
-            this.lblBookCount = new System.Windows.Forms.Label();
+            this.lbleBookCount = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSaveNewStorageSpace = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -66,7 +66,7 @@
             // VSS
             // 
             this.VSS.Controls.Add(this.lblStorageSpaceDescription);
-            this.VSS.Controls.Add(this.lblBookCount);
+            this.VSS.Controls.Add(this.lbleBookCount);
             this.VSS.Controls.Add(this.btnCancel);
             this.VSS.Controls.Add(this.btnSaveNewStorageSpace);
             this.VSS.Controls.Add(this.textBox1);
@@ -88,14 +88,14 @@
             this.lblStorageSpaceDescription.TabIndex = 8;
             this.lblStorageSpaceDescription.Text = "Storage Space Description:";
             // 
-            // lblBookCount
+            // lbleBookCount
             // 
-            this.lblBookCount.AutoSize = true;
-            this.lblBookCount.Location = new System.Drawing.Point(7, 65);
-            this.lblBookCount.Name = "lblBookCount";
-            this.lblBookCount.Size = new System.Drawing.Size(80, 15);
-            this.lblBookCount.TabIndex = 7;
-            this.lblBookCount.Text = "lblBookCount";
+            this.lbleBookCount.AutoSize = true;
+            this.lbleBookCount.Location = new System.Drawing.Point(7, 65);
+            this.lbleBookCount.Name = "lbleBookCount";
+            this.lbleBookCount.Size = new System.Drawing.Size(86, 15);
+            this.lbleBookCount.TabIndex = 7;
+            this.lbleBookCount.Text = "lbleBookCount";
             // 
             // btnCancel
             // 
@@ -185,7 +185,7 @@
         private System.Windows.Forms.Button btnAddNewStorageSpace;
         private System.Windows.Forms.ComboBox dlVirtualStorageSpaces;
         private System.Windows.Forms.Label lblStorageSpaceDescription;
-        private System.Windows.Forms.Label lblBookCount;
+        private System.Windows.Forms.Label lbleBookCount;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSaveNewStorageSpace;
         private System.Windows.Forms.TextBox textBox1;

@@ -111,6 +111,46 @@ namespace eBookManager
             dlVirtualStorageSpaces.ValueMember = "Key";
 
         }
+
+        private void dlVirtualStorageSpaces_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedValue = dlVirtualStorageSpaces.SelectedValue.ToString().ToInt();
+            if (selectedValue == (int)_storageSpaceSelection.New)
+            {
+                txtNewStorageSpaceName.Visible = true;
+                lblStorageSpaceDescription.Visible = true;
+                txtStorageSpaceDescription.ReadOnly = false;
+                btnSaveNewStorageSpace.Visible = true;
+                btnCancelNewStorageSpaceSave.Visible = true;
+                dlVirtualStorageSpaces.Enabled = false;
+                btnAddNewStorageSpace.Enabled = false;
+                lbleBookCount.Text = "";
+            }
+            else if (selectedValue != (int)_storageSpaceSelection.NoSelection)
+            {
+                int contentCount = (
+                    from c in _spaces
+                    where c.ID == selectedValue
+                    select c).Count();
+                if (contentCount> 0)
+                {
+                    StorageSpace selectedSpace = (
+                    from c in _spaces
+                    where c.ID == selectedValue
+                    select c).First();
+                    txtStorageSpaceDescription.Text = selectedSpace.Description;
+                    List<Document> eBooks = (selectedSpace.BookList == null) ? new List<Document> { } : selectedSpace.BookList;
+                    lbleBookCount.Text = $"Storage Space contains { eBooks.Count()} {(eBooks.Count() == 1 ? "eBook" : "eBooks")}";
+                }
+            }
+            else
+            {
+                lbleBookCount.Text = " ";
+            }
+        }
+
+     
+
         
     }
 }

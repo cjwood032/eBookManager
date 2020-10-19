@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using eBookManager.Engine;
 
 
-namespace EbookManager.Helper
+namespace eBookManager.Helper
 {
     public static class ExtensionMethods
     {
